@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
   render() {
@@ -8,6 +9,10 @@ class Home extends React.Component {
       <div>
         <h1>Home Page</h1>
         <h1>{user.loginName}</h1>
+
+        <p>
+          <Link to="/login">Logout</Link>
+        </p>
       </div>
     );
   }

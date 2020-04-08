@@ -3,11 +3,11 @@ import { userService } from "../services";
 import { history } from "../helpers";
 
 export const userActions = {
-  login
+  login,
+  logout
 };
 
 function login(username, password) {
-  console.log(username);
   return dispatch => {
     dispatch(request({ username }));
     userService.login(username, password).then(
@@ -17,7 +17,6 @@ function login(username, password) {
       },
       error => {
         dispatch(failure(error.toString()));
-        //dispatch(alertActions.error(error.toString()));
       }
     );
   };
@@ -31,4 +30,9 @@ function login(username, password) {
   function failure(error) {
     return { type: userConstants.LOGIN_FAILURE, error };
   }
+}
+
+function logout() {
+  userService.logout();
+  return { type: userConstants.LOGOUT };
 }
